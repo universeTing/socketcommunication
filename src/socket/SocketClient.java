@@ -17,7 +17,7 @@ public class SocketClient{
         try {
             System.out.println("连接到主机："+ serverName + ",端口号： " + port);
             //实例化一个套接字对象，传入端口和服务名进行连接
-            Socket client = new Socket(serverName,port);
+            Socket client = new Socket(serverName, port);
             System.out.println("远程主机地址："+ client.getRemoteSocketAddress());
             //创建一个输出流，用于套接字通信传输
             OutputStream outputStreamServer = client.getOutputStream();
