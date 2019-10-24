@@ -56,7 +56,7 @@ public class SocketServer extends Thread{
         int port = 8888;
         try {
             // 指定一个端口去监听
-            // thread会去调用本身的run()方法，具体的逻辑再run()里面执行实现
+            // thread构造成功后会去调用本身的run()方法，具体的逻辑再run()里面执行实现
             Thread t = new SocketServer(port);
             t.run();
             t.stop();
