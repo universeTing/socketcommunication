@@ -13,7 +13,7 @@ import java.io.*;
 public class SocketClient{
     public static void main(String[] args){
         String serverName = "127.0.0.1";
-        int port = 8888;
+        int port = 8915;
         try {
             System.out.println("连接到主机："+ serverName + ",端口号： " + port);
             //实例化一个套接字对象，传入端口和服务名进行连接
