@@ -31,9 +31,7 @@ public class MakeMultiplyMaximum {
                         //是负数 并且 负数得绝对值对小
                         tempIndex = i ;
                     }
-
                 }
-
             }
             return tempIndex;
         }else{
@@ -45,9 +43,7 @@ public class MakeMultiplyMaximum {
                         //找出负数最小得数，记绝对值最大得值
                         tempIndex = i ;
                     }
-
                 }
-
                 return tempIndex;
             }
 
@@ -58,12 +54,19 @@ public class MakeMultiplyMaximum {
                         tempIndex = i;
                     }
                 }
-
             }
-
             return tempIndex;
-
         }
+    }
+
+
+    public double testVariable(Double... args){
+        double largest = Double.NEGATIVE_INFINITY; //-1.0 / 0.0
+        for(double v : args){
+            if(v > largest) largest = v;
+        }
+        return largest;
+
     }
 
 
@@ -72,6 +75,9 @@ public class MakeMultiplyMaximum {
         MakeMultiplyMaximum m = new MakeMultiplyMaximum();
         int i = m.removeAMumberMakeMutiplyMaximum(list);
         System.out.println(list[i]);
+
+        double v = m.testVariable(1.0, 2.0, 3.0, 4.0);
+        System.out.println("v = " + v);
     }
 
 
