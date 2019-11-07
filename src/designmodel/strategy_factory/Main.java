@@ -1,20 +1,13 @@
 package designmodel.strategy_factory;
-
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
-import java.net.Socket;
-import java.nio.file.Files;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-
-import static java.lang.System.in;
 
 /**
  * 策略-工厂模式的入口
@@ -48,31 +41,49 @@ public class Main {
         // 获取到键值对
         Set<Map.Entry<Object,Object>> set = properties.entrySet();
         // 测试数据
-        String type = "supervip";
-        BigDecimal orderPay = new BigDecimal(123);
+        //int total = 494 + 260 + 296 + 179 + 359;
 
+        // （白色）连衣裙 + （长袖）小众衬衣 + （西装）连衣裙 + 网纱两件套 + （绿色）棉服
+       /* String type = "supervip";//6折
+        int total = 251 + 260 + 341 + 179 + 494;*/
+
+        // （白色）连衣裙 + （长袖）小众衬衣
+        String type = "overdueoneweekvip";//8折
+        int total = 251 + 260;
+
+        // （白色）连衣裙 + （长袖）小众衬衣 + （绿色）棉服
+        /*String type = "spercialvip";//7折
+        int total = 251 + 260 + 494;*/
+
+
+        BigDecimal orderPay = new BigDecimal(String.valueOf(total));
         Iterator<Map.Entry<Object,Object>> iterator = set.iterator();
         while(iterator.hasNext()){
+            // 注意这里有个坑，迭代器next一次就会往下一个指，所以把当前的指处理结束了再掉一次next
+            Map.Entry<Object,Object> me = iterator.next();
             // 如果是该类型，则根据key取出对应的value 创建类来进行计算
-            if(iterator.next().getKey().equals(type)){
+            if(me.getKey().equals(type)){
                 try {
                     // 动态的创建一个类实例
                     // E klass = (E) Class.forName(value.trim());
                     // 拿到类全名
-                    String name = iterator.next().getValue().toString();
+                    String name = me.getValue().toString();
 
                     // 利用反射动态创建类
                     Class<?> aClass = Class.forName(name.trim());
                     // 指定一个类型，创建一个类实例
                     UserPayService userPayService = (UserPayService) aClass.newInstance();
-                    // 动态的调用方法的两种方法
+                    // 动态的调用方法的两种方法, 打折
                     BigDecimal quote = userPayService.quote(orderPay);
+                    quote = quote.add(new BigDecimal(208 + 387));
 
+                    // 拿到aClass的quote方法，然后去invoke执行
                     Method method = aClass.getMethod("quote", BigDecimal.class);
                     Object obj3 = method.invoke(userPayService, orderPay);  // invoke方法的两个参数，第一个是实例对象，第二个是参数列表
 
+                    System.out.println("you are the: " + type + "   order pay : "+ quote+ "￥");
                     System.out.println("you are the: " + type + "   order pay : "+ quote + "￥");
-                    System.out.println("you are the: " + type + "   order pay : "+ obj3 + "￥");
+                    System.out.println("you are the: " + type + "   final order pay : "+ quote.subtract(new BigDecimal(100+20)) + "￥");
                 } catch (InstantiationException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {

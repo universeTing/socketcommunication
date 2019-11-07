@@ -18,7 +18,7 @@ public class OverdueOneWeekVipDto implements UserPayService {
 
     @Override
     public BigDecimal quote(BigDecimal orderPay) {
-        // 打9折
-        return orderPay.multiply(new BigDecimal("0.9"));
+        // 打8折
+        return orderPay.multiply(new BigDecimal("0.8"));
     }
 }
