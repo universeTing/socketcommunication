@@ -77,7 +77,8 @@ public class Main {
                     BigDecimal quote = userPayService.quote(orderPay);
                     quote = quote.add(new BigDecimal(208 + 387));
 
-                    // 拿到aClass的quote方法，然后去invoke执行
+                    // 拿到aClass的quote方法，然后去invoke执行，
+                    // 这种方法不推荐使用，因为invoke出来的是object对象，并不知道是需要的那个对象，使编译器错过了检测代码的机会，如果有问题就只有在测试阶段才暴露出来
                     Method method = aClass.getMethod("quote", BigDecimal.class);
                     Object obj3 = method.invoke(userPayService, orderPay);  // invoke方法的两个参数，第一个是实例对象，第二个是参数列表
 
