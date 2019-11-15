@@ -47,8 +47,8 @@ public class Main {
        /* String type = "supervip";//6折
         int total = 251 + 260 + 341 + 179 + 494;*/
 
-        // （白色）连衣裙 + （长袖）小众衬衣
-        String type = "overdueoneweekvip";//8折
+        // （白色）连衣裙 + （长袖）小众衬衣 //8折
+        String type = "overdueoneweekvip";
         int total = 251 + 260;
 
         // （白色）连衣裙 + （长袖）小众衬衣 + （绿色）棉服
@@ -80,7 +80,8 @@ public class Main {
                     // 拿到aClass的quote方法，然后去invoke执行，
                     // 这种方法不推荐使用，因为invoke出来的是object对象，并不知道是需要的那个对象，使编译器错过了检测代码的机会，如果有问题就只有在测试阶段才暴露出来
                     Method method = aClass.getMethod("quote", BigDecimal.class);
-                    Object obj3 = method.invoke(userPayService, orderPay);  // invoke方法的两个参数，第一个是实例对象，第二个是参数列表
+                    // invoke方法的两个参数，第一个是实例对象，第二个是参数列表
+                    Object obj3 = method.invoke(userPayService, orderPay);
 
                     System.out.println("you are the: " + type + "   order pay : "+ quote+ "￥");
                     System.out.println("you are the: " + type + "   order pay : "+ quote + "￥");

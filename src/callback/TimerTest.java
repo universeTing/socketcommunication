@@ -7,6 +7,10 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
+/**
+ * @date 2019-11-15
+ * @author wangyt
+ */
 public class TimerTest {
 
     public static void main(String[] args) {
