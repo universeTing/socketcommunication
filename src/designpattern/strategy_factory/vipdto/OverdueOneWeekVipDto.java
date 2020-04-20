@@ -1,7 +1,6 @@
-package designmodel.strategy_factory.vipdto;
+package designpattern.strategy_factory.vipdto;
 
-import designmodel.strategy_factory.UserPayService;
-import javafx.fxml.Initializable;
+import designpattern.strategy_factory.UserPayService;
 
 import java.math.BigDecimal;
 

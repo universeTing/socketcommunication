@@ -1,4 +1,4 @@
-package designmodel.strategy_factory;
+package designpattern.strategy_factory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;

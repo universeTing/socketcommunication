@@ -1,4 +1,4 @@
-package designmodel.strategy_factory;
+package designpattern.strategy_factory;
 
 import java.math.BigDecimal;
 
